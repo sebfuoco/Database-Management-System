@@ -52,10 +52,10 @@ img.header {
         		<a class="nav-item nav-link" href="userPage.php">Details</a>
         		<a class="nav-item nav-link" href="service.php">Booking</a>
         	</div>
-        	<a href="register.php"><button class="btn btn-primary mr-1" id="signUp">Sign Up</button></a>
-        	<a href="login.php"><button class="btn btn-primary mr-1" id="login">Login</button></a>
-        	<a href="logout.php"><button class="btn btn-primary mr-1" id="logout">Logout</button></a>
-        	<a href="resetPassword.php"><button class="btn btn-primary mr-1" id="resetPassword">Reset Password</button></a>
+        	<a href="register.php"><button class="btn btn-primary mr-1 mb-1" id="signUp">Sign Up</button></a>
+        	<a href="login.php"><button class="btn btn-primary mr-1 mb-1" id="login">Login</button></a>
+        	<a href="logout.php"><button class="btn btn-primary mr-1 mb-1" id="logout">Logout</button></a>
+        	<a href="resetPassword.php"><button class="btn btn-primary mr-1 mb-1" id="resetPassword">Reset Password</button></a>
 		</div>
 	</nav>
 	<div class="container-fluid min-vh-100">

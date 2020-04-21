@@ -116,8 +116,8 @@ img.header {
         		<a class="nav-item nav-link" href="userPage.php">Details</a>
         		<a class="nav-item active nav-link" href="service.php">Booking</a>
         	</div>
-        	<a href="logout.php"><button class="btn btn-primary mr-1">Logout</button></a>
-        	<a href="resetPassword.php"><button class="btn btn-primary mr-1">Reset Password</button></a>
+        	<a href="logout.php"><button class="btn btn-primary mr-1 mb-1">Logout</button></a>
+        	<a href="resetPassword.php"><button class="btn btn-primary mr-1 mb-1">Reset Password</button></a>
 		</div>
 	</nav>
 	<div class="container-fluid min-vh-100">
