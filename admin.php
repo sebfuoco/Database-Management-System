@@ -450,10 +450,29 @@ img.header {
 	</div>
 </div>
 <script>
+var start = 0;
+var today = new Date();
+var time = today.getHours();
+var timeRange = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+if (time > timeRange[8]){
+	start = 1;
+	var startTime = 0;
+}
+else if (time < timeRange[0]){
+	var startTime = 0;
+}
+else {
+	var startTime = timeRange.indexOf(time);
+}
+var select = document.getElementById("serviceTime");
+for (var i = 0; startTime < timeRange.length; startTime++ && i++){
+	var option = document.createElement("option");
+    option.text = timeRange[startTime] + ":00";
+    select.appendChild(option);
+}
 // Function from https://medium.com/@quynh.totuan/how-to-get-the-current-week-in-javascript-9e64d45a9a08
 var curr = new Date();
 var week = [];
-var start = 0;
 for (let i = 0; i <= 6; i++) {
 	let first = curr.getDate() + start;
 	start = 1;
@@ -472,16 +491,5 @@ for (var i = 0; i < week.length; i++){
 	document.getElementsByName("day")[i].innerHTML = day;
 }
 
-var today = new Date();
-var time = today.getHours();
-console.log(time);
-var timeRange = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-var startTime = timeRange.indexOf(time);
-var select = document.getElementById("serviceTime");
-for (var i = 0; startTime < timeRange.length; startTime++ && i++){
-	var option = document.createElement("option");
-    option.text = timeRange[startTime] + ":00";
-    select.appendChild(option);
-}
 </script>
 </body>
