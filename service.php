@@ -210,7 +210,7 @@ img.header {
 			<form class="col-sm border bg-light">
 				<p class="headerText display-4">Previous History</p>
 				<div class="form-group">
-					<textarea class="form-control form-control-lg" readonly><?php echo $previousHistory; ?></textarea>
+					<textarea id="textarea" class="form-control form-control-lg" onclick="autoSize()" readonly><?php echo $previousHistory; ?></textarea>
 				</div>
 			</form>
 		</div>
@@ -289,12 +289,15 @@ var timeRange = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 if (time > timeRange[8]){
 	start = 1;
 	var startTime = 0;
+	var choice = 0;
 }
 else if (time < timeRange[0]){
 	var startTime = 0;
+	var choice = 0;
 }
 else {
 	var startTime = timeRange.indexOf(time);
+	var choice = 1;
 }
 var select = document.getElementById("serviceTime");
 for (var i = 0; startTime < timeRange.length; startTime++ && i++){
@@ -302,7 +305,14 @@ for (var i = 0; startTime < timeRange.length; startTime++ && i++){
     option.text = timeRange[startTime] + ":00";
     select.appendChild(option);
 }
-startTime = timeRange.indexOf(time);
+switch(choice){
+	case 0:
+		startTime = 0;
+		break;
+	case 1:
+		startTime = timeRange.indexOf(time);
+		break;
+}
 var select = document.getElementById("modalTime");
 for (var i = 0; startTime < timeRange.length; startTime++ && i++){
 	var option = document.createElement("option");
@@ -330,5 +340,15 @@ for (var i = 0; i < week.length; i++){
 	document.getElementsByName("day")[i].innerHTML = day;
 	document.getElementsByName("dayModal")[i].innerHTML = day;
 }
+
+// Function from https://stackoverflow.com/a/25621277
+function autoSize(){
+	$('textarea').each(function () {
+		this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+		this.style.height = 'auto';
+		this.style.height = (this.scrollHeight) + 'px';
+	});
+};
+autoSize();
 </script>
 </body>
