@@ -215,7 +215,7 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 </style>
 <body>
@@ -244,29 +244,21 @@ img.header {
 		<div class="row">
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Update User Vehicle Details</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Username</span>
-				   	</div>
-					<select class="form-control form-control-lg" name="username1" value="<?php echo $username ?>"></select>
+				<div class="form-group">
+					<label>Username</label>
+					<select class="form-control" name="username1" value="<?php echo $username ?>"></select>
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Car Brand</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="carBrand">
+				<div class="form-group">
+					<label>Car Brand</label>
+					<input class="form-control" name="carBrand">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Car Name</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="carName">
+				<div class="form-group">
+					<label>Car Name</label>
+					<input class="form-control" name="carName">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Number Plate</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="numPlate">
+				<div class="form-group">
+					<label>Number Plate</label>
+					<input class="form-control" name="numPlate">
 				</div>
 				<button type="submit" class="btn btn-primary btn-lg mb-1" name="vehicleBtn" value="Submit">Submit</button>
 				<button type="submit" name="viewBtn1" class="btn btn-primary btn-lg mb-1 mr-1 ml-1">View User</button>
@@ -274,29 +266,21 @@ img.header {
 			</form>
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Update User Contact Details</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Username</span>
-				   	</div>
-					<select class="form-control form-control-lg" name="username2" value="<?php echo $username ?>"></select>
+				<div class="form-group">
+					<label>Username</label>
+					<select class="form-control" name="username2" value="<?php echo $username ?>"></select>
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Full Name</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="fullName">
+				<div class="form-group">
+					<label>Full Name</label>
+					<input class="form-control" name="fullName">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Email</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="email">
+				<div class="form-group">
+					<label>Email Address</label>
+					<input class="form-control" name="email">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Phone Number</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="phoneNumber">
+				<div class="form-group">
+					<label>Phone Number</label>
+					<input class="form-control" name="phoneNumber">
 				</div>
 				<span class="help-block"></span>
 				<button type="submit" class="btn btn-primary btn-lg mb-1" name="contactBtn" value="Submit">Submit</button>
@@ -307,27 +291,21 @@ img.header {
 		<div class="row">
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Update User Service</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Username</span>
-				   	</div>
-					<select class="form-control form-control-lg" name="username3" value="<?php echo $username ?>"></select>
+				<div class="form-group">
+					<label>Username</label>
+					<select class="form-control" name="username3" value="<?php echo $username ?>"></select>
 				</div>
 				<div class="row justify-content-center">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-					   		<span class="input-group-text">Service</span>
-					   	</div>
-						<select class="form-control form-control-lg" name="service">
+					<div class="form-group col-sm">
+						<label>Service</label>
+						<select class="form-control" name="service">
 							<option>MOT Test</option>
 							<option>Repair</option>
 						</select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Day</span>
-						</div>
-						<select class="form-control form-control-lg" name="serviceDate">
+					<div class="form-group col-sm">
+						<label>Date</label>
+						<select class="form-control" name="serviceDate">
 							<option name="day"></option>
 							<option name="day"></option>
 							<option name="day"></option>
@@ -339,17 +317,13 @@ img.header {
 					</div>
 				</div>
 				<div class="row justify-content-center">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Time</span>
-						</div>
-						<select class="form-control form-control-lg" id="serviceTime" name="serviceTime"></select>
+					<div class="form-group col-sm">
+						<label>Time</label>
+						<select class="form-control" id="serviceTime" name="serviceTime"></select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Location</span>
-						</div>
-						<select class="form-control form-control-lg" name="location">
+					<div class="form-group col-sm">
+						<label>Location</label>
+						<select class="form-control" name="location">
 							<option>Woking</option>
 							<option>Farnborough</option>
 							<option>Guildford</option>
@@ -369,44 +343,32 @@ img.header {
 	<div class="row">
 		<form class="col-sm border bg-light" action="" method="POST">
 			<p class="headerText display-4">View User Data</p>
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">User</span>
-				</div>
-				<input class="form-control form-control-lg" value="<?php echo $name; ?>" readonly>
+			<div class="form-group">
+				<label>Username</label>
+				<input class="form-control" value="<?php echo $name; ?>" readonly>
 			</div>
-			<div class="row justify-content-center mb-3">
-				<div class="input-group col-sm">
-					<div class="input-group-prepend">
-						<span class="input-group-text" ><?php echo $label1; ?></span>
-					</div>
-					<input class="form-control form-control-lg" value="<?php echo $textbox1; ?>" readonly>
+			<div class="row justify-content-center">
+				<div class="form-group col-sm">
+					<label><?php echo $label1; ?></label>
+					<input class="form-control" value="<?php echo $textbox1; ?>" readonly>
 				</div>
-				<div class="input-group col-sm">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><?php echo $label2; ?></span>
-					</div>
-					<input class="form-control form-control-lg" value="<?php echo $textbox2; ?>" readonly>
+				<div class="form-group col-sm">
+					<label><?php echo $label2; ?></label>
+					<input class="form-control" value="<?php echo $textbox2; ?>" readonly>
 				</div>
-				<div class="input-group col-sm">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><?php echo $label3; ?></span>
-					</div>
-					<input class="form-control form-control-lg" value="<?php echo $textbox3; ?>" readonly>
+				<div class="form-group col-sm">
+					<label><?php echo $label3; ?></label>
+					<input class="form-control" value="<?php echo $textbox3; ?>" readonly>
 				</div>
 			</div>
-			<div class="row justify-content-center mb-3">
-				<div class="input-group col-sm">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><?php echo $label4; ?></span>
-					</div>
-					<input class="form-control form-control-lg" value="<?php echo $textbox4; ?>" readonly>
+			<div class="row justify-content-center">
+				<div class="form-group col-sm">
+					<label><?php echo $label4; ?></label>
+					<input class="form-control" value="<?php echo $textbox4; ?>" readonly>
 				</div>
-				<div class="input-group col-sm">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><?php echo $label5; ?></span>
-					</div>
-					<input class="form-control form-control-lg" value="<?php echo $textbox5; ?>" readonly>
+				<div class="form-group col-sm">
+					<label><?php echo $label5; ?></label>
+					<input class="form-control" value="<?php echo $textbox5; ?>" readonly>
 				</div>
 			</div>
 		</form>
@@ -423,18 +385,14 @@ img.header {
 			</div>
 			<div class="modal-body">
 				<form action="" method="POST">
-					<div class="form-group form-row align-items-center">
-						<div class="input-group mb-3">
-				        	<div class="input-group-prepend">
-				          		<div class="input-group-text">Username</div>
-				        	</div>
-					     	<select class="form-control form-control-lg" name="updateUser" value="<?php echo $username ?>"></select>
+					<div class="form-group align-items-center">
+						<div class="form-group">
+							<label>Username</label>
+					     	<select class="form-control" name="updateUser" value="<?php echo $username ?>"></select>
 					    </div>
-						<div class="input-group mb-3">
-				        	<div class="input-group-prepend">
-				          		<div class="input-group-text">Progress</div>
-				        	</div>
-					     	<select class="form-control form-control-lg" name="modalProgress">
+						<div class="form-group">
+							<label>Progress</label>
+					     	<select class="form-control" name="modalProgress">
 					     		<option>Booked</option>
 								<option>In Progress</option>
 								<option>On-Hold</option>

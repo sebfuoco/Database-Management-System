@@ -120,7 +120,7 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 </style>
 <body>
@@ -148,40 +148,38 @@ img.header {
 		</div>
 		<p class="headerText display-4">Invoice</p>
 		<form action="" method="POST">
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">Username</span>
-				</div>
-				<select class="form-control form-control-lg" name="username" value="<?php echo $username ?>"></select>
+			<div class="form-group">
+				<label>Username</label>
+				<select class="form-control" name="username" value="<?php echo $username ?>"></select>
 			</div>
 			<button type="submit" name="submitBtn" class="btn btn-primary btn-lg mb-1">Submit</button>
 			<div class="row justify-content-center">
 				<div class="form-group col-sm">
-					<label for="progress">Part fitted</label>
-					<input class="form-control form-control-lg" value="<?php echo $part ?>" readonly>
+					<label>Part fitted</label>
+					<input class="form-control" value="<?php echo $part ?>" readonly>
 				</div>
 				<div class="form-group col-sm">
-					<label for="progress">Quantity</label>
-					<input class="form-control form-control-lg" value="<?php echo $quantity ?>" readonly>
+					<label>Quantity</label>
+					<input class="form-control" value="<?php echo $quantity ?>" readonly>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="form-group col-sm">
-					<label for="progress">Price</label>
-					<input class="form-control form-control-lg" name="price" value="<?php echo $price ?>" readonly>
+					<label>Price</label>
+					<input class="form-control" name="price" value="<?php echo $price ?>" readonly>
 				</div>
 				<div class="form-group col-sm">
-					<label for="progress">Service Date</label>
-					<input class="form-control form-control-lg" value="<?php echo $dateResultText ?>" readonly>
+					<label>Service Date</label>
+					<input class="form-control" value="<?php echo $dateResultText ?>" readonly>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="form-group col-sm">
-					<label for="progress">Summary</label>
-					<input class="form-control form-control-lg" name="summary" value="<?php echo $summary ?>" readonly>
+					<label>Summary</label>
+					<input class="form-control" name="summary" value="<?php echo $summary ?>" readonly>
 				</div>
 			</div>
-			<button type="submit" name="updateBtn" class="btn btn-primary btn-lg mb-1">Finalise</button>
+			<button type="submit" name="updateBtn" class="btn btn-primary btn-lg mb-2">Finalise</button>
 		</form>
 	</div>
 </body>

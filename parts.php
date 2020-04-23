@@ -275,7 +275,11 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
+}
+
+.warning {
+	font-size: calc(10px + 1vmin);
 }
 </style>
 <body>
@@ -303,90 +307,70 @@ img.header {
 		</div>
 		<div class="row">
 			<form class="col-sm border bg-light" action="" method="POST">
-				<h4 class="row bg-warning mb-0"><?php echo $message; ?></h4>
-				<h4 class="row bg-danger mb-0"><?php echo $warning; ?></h4>
+				<h4 class="row bg-warning mb-0 warning"><?php echo $message; ?></h4>
+				<h4 class="row bg-danger mb-0 warning"><?php echo $warning; ?></h4>
 				<p class="headerText display-4">Part Details</p>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Parts</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Part</label>
 						<select class="form-control form-control-lg" name="parts" value="<?php echo $parts ?>">
 						</select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Quantity</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Quantity</label>
 						<input class="form-control form-control-lg" name="quantity">
 						</select>
 					</div>
 				</div>
 				<p class="headerText display-4">Work Details</p>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Username</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Username</label>
 						<select class="form-control form-control-lg" name="username" value="<?php echo $username ?>"></select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Man-hours</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Hours</label>
 						<input class="form-control form-control-lg" name="hours">
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Rate</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Rate</label>
 						<input class="form-control form-control-lg" name="rate">
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Summary</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Summary</label>
 						<input class="form-control form-control-lg" name="summary">
 					</div>
 				</div>
 				<button type="submit" name="submitBtn" class="btn btn-primary btn-lg mb-1">Submit</button>
 				<p class="headerText display-4">Order Parts</p>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Company</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Company</label>
 						<select class="form-control form-control-lg" name="company" value="<?php echo $companyPart ?>">
 						</select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Part</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Part</label>
 						<select class="form-control form-control-lg" name="orderParts" value="<?php echo $parts ?>">
 						</select>
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Type</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Type</label>
 						<select class="form-control form-control-lg" name="sub">
 							<option>Original</option>
 							<option>Substitute</option>
 						</select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Quantity</span>
-						</div>
+					<div class="form-group col-sm">
+						<label>Quantity</label>
 						<input class="form-control form-control-lg" name="orderQuantity">
 					</div>
 				</div>
-				<button type="submit" name="orderBtn" class="btn btn-primary btn-lg mb-1">Order</button>
+				<button type="submit" name="orderBtn" class="btn btn-primary btn-lg mb-2">Order</button>
 			</form>
 		</div>
 	</div>

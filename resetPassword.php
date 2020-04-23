@@ -93,11 +93,11 @@ overflow: hidden;
 }
 
 .headerText {
-    font-size: 8vmin;
+    font-size: calc(12px + 6vmin);
 }
 
 .smallText {
-    font-size: 3vmin;
+    font-size:calc(12px + 3vmin);
 }
 </style>
 </head>

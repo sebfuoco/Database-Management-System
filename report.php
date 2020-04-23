@@ -137,7 +137,7 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 </style>
 <body>
@@ -168,64 +168,60 @@ img.header {
 				<p class="headerText display-4">Customer Details</p>
 				<div class="row">
 					<div class="form-group col-sm <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-					    <label for="numPlate">Username</label>
-						<input class="form-control form-control-lg" name="username">
+					    <label>Username</label>
+						<input class="form-control" name="username">
 						<span class="help-block"><?php echo $username_err; ?></span>
 					</div>
 					<div class="form-group col-sm <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-					    <label for="numPlate">Password</label>
-						<input type="password" class="form-control form-control-lg" name="password">
+					    <label>Password</label>
+						<input type="password" class="form-control" name="password">
 						<span class="help-block"><?php echo $password_err; ?></span>
 					</div>
 					<div class="form-group col-sm <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-					    <label for="numPlate">Confirm Password</label>
-						<input type="password" class="form-control form-control-lg" name="confirm_password">
+					    <label>Confirm Password</label>
+						<input type="password" class="form-control" name="confirm_password">
 						<span class="help-block"><?php echo $confirm_password_err; ?></span>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm">
-					    <label for="numPlate">Full Name</label>
-						<input class="form-control form-control-lg" name="fullName">
+					    <label>Full Name</label>
+						<input class="form-control" name="fullName">
 					</div>
 					<div class="form-group col-sm">
-					    <label for="numPlate">Email Address</label>
-						<input class="form-control form-control-lg" name="email">
+					    <label>Email Address</label>
+						<input class="form-control" name="email">
 					</div>
 					<div class="form-group col-sm">
-					    <label for="numPlate">Phone Number</label>
-						<input class="form-control form-control-lg" name="phoneNumber">
+					    <label>Phone Number</label>
+						<input class="form-control" name="phoneNumber">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<div class="form-group col-sm">
-					    <label for="carName">Car Brand</label>
-						<input class="form-control form-control-lg" name="carBrand">
+					    <label>Car Brand</label>
+						<input class="form-control" name="carBrand">
 					</div>
 					<div class="form-group col-sm">
-					    <label for="carName">Car Name</label>
-						<input class="form-control form-control-lg" name="carName">
+					    <label>Car Name</label>
+						<input class="form-control" name="carName">
 					</div>
 					<div class="form-group col-sm">
-					    <label for="numPlate">Number Plate</label>
-						<input class="form-control form-control-lg" name="numPlate">
+					    <label>Number Plate</label>
+						<input class="form-control" name="numPlate">
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-					   		<span class="input-group-text">Service</span>
-					   	</div>
-						<select class="form-control form-control-lg" name="service">
+					<div class="form-group col-sm">
+						<label>Service</label>
+						<select class="form-control" name="service">
 							<option>MOT Test</option>
 							<option>Repair</option>
 						</select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Day</span>
-						</div>
-						<select class="form-control form-control-lg" name="serviceDate">
+					<div class="form-group col-sm">
+						<label>Date</label>
+						<select class="form-control" name="serviceDate">
 							<option name="day"></option>
 							<option name="day"></option>
 							<option name="day"></option>
@@ -237,17 +233,13 @@ img.header {
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Time</span>
-						</div>
-						<select class="form-control form-control-lg" id="serviceTime" name="serviceTime"></select>
+					<div class="form-group col-sm">
+						<label>Time</label>
+						<select class="form-control" id="serviceTime" name="serviceTime"></select>
 					</div>
-					<div class="input-group mb-3 col-sm">
-						<div class="input-group-prepend">
-							<span class="input-group-text">Location</span>
-						</div>
-						<select class="form-control form-control-lg" name="location">
+					<div class="form-group col-sm">
+						<label>Location</label>
+						<select class="form-control" name="location">
 							<option>Woking</option>
 							<option>Farnborough</option>
 							<option>Guildford</option>
@@ -258,7 +250,7 @@ img.header {
 						</select>
 					</div>
 				</div>
-				<button type="submit" name="saveBtn" class="btn btn-primary btn-lg mb-1">Submit</button>
+				<button type="submit" name="saveBtn" class="btn btn-primary btn-lg mb-2">Submit</button>
 				<span><?php echo $message ?></span>
 			</form>
 		</div>

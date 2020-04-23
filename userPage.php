@@ -14,7 +14,7 @@ require_once "checkID.php";
 $carName = $numberPlate = $message = "";
 $fullName = $email = $phoneNumber = "";
 
-$query = "SELECT carName, numberPlate FROM usercar WHERE carID = '$userID'";
+$query = "SELECT carBrand, carName, numberPlate FROM usercar WHERE carID = '$userID'";
 $query2 = "SELECT fullName, email, phoneNumber FROM userdetails WHERE userID = '$userID'";
 $vehicleDetails = $link->query($query);
 $userDetails = $link->query($query2);
@@ -32,7 +32,6 @@ if(isset($_POST['contactBtn'])){ //check if form was submitted
 	$fullName = ($fullName ?: $userDetails["fullName"]); // if fullName is empty then equal previous entry
 	$email = ($email ?: $userDetails["email"]);
 	if(preg_match("/^[0-9]{5} [0-9]{6}$/", $phoneNumber)) {
-		echo "Gucci";
 	}else {
 		$phoneNumber = $userDetails["phoneNumber"];
 	}
@@ -102,7 +101,7 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 </style>
 </head>
@@ -131,46 +130,34 @@ img.header {
 			<!-- Input -->
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Update Vehicle Details</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Car Brand</span>
-				   	</div>
-				   	<input  class="form-control form-control-lg" name="carBrand">
+				<div class="form-group">
+					<label>Car Brand</label>
+				   	<input class="form-control" name="carBrand">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Car Name</span>
-				   	</div>
-				   	<input class="form-control form-control-lg" name="carName">
+				<div class="form-group">
+					<label>Car Name</label>
+				   	<input class="form-control" name="carName">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Number Plate</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="numPlate">
+				<div class="form-group">
+					<label>Number Plate</label>
+					<input class="form-control" name="numPlate">
 				</div>
 				<span class="help-block"><?php echo $message; ?></span>
 				<button type="submit" class="btn btn-primary btn-lg mb-1" name="vehicleBtn" value="Submit">Submit</button>
 			</form>
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Update Contact Details</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Full Name</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="fullName">
+				<div class="form-group">
+					<label>Full Name</label>
+					<input class="form-control input-sm" name="fullName">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Email</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="email">
+				<div class="form-group">
+					<label>Email Address</label>
+					<input class="form-control input-sm" name="email">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Phone Number</span>
-				   	</div>
-					<input class="form-control form-control-lg" name="phoneNumber">
+				<div class="form-group">
+					<label for="numPlate">Phone Number</label>
+					<input class="form-control input-sm" name="phoneNumber">
 				</div>
 				<span class="help-block"></span>
 				<button type="submit" class="btn btn-primary btn-lg mb-1" name="contactBtn" value="Submit">Submit</button>
@@ -182,23 +169,27 @@ img.header {
 				<p class="headerText display-4">Current Details</p>
 				<div class="form-group">
 				    <label for="numPlate">Full Name</label>
-					<input class="form-control form-control-lg" value="<?php echo $userDetails["fullName"]; ?>" readonly>
+					<input class="form-control input-sm" value="<?php echo $userDetails["fullName"]; ?>" readonly>
 				</div>
 				<div class="form-group">
 				    <label for="numPlate">Email Address</label>
-					<input class="form-control form-control-lg" value="<?php echo $userDetails["email"]; ?>" readonly>
+					<input class="form-control input-sm" value="<?php echo $userDetails["email"]; ?>" readonly>
 				</div>
 				<div class="form-group">
 				    <label for="numPlate">Phone Number</label>
-					<input class="form-control form-control-lg" value="<?php echo $userDetails["phoneNumber"]; ?>" readonly>
+					<input class="form-control input-sm" value="<?php echo $userDetails["phoneNumber"]; ?>" readonly>
+				</div>
+				<div class="form-group">
+				    <label for="carName">Car Brand</label>
+					<input class="form-control input-sm" value="<?php echo $vehicleDetails["carBrand"]; ?>" readonly>
 				</div>
 				<div class="form-group">
 				    <label for="carName">Car Name</label>
-					<input class="form-control form-control-lg" value="<?php echo $vehicleDetails["carName"]; ?>" readonly>
+					<input class="form-control input-sm" value="<?php echo $vehicleDetails["carName"]; ?>" readonly>
 				</div>
 				<div class="form-group">
 				    <label for="numPlate">Number Plate</label>
-					<input class="form-control form-control-lg" value="<?php echo $vehicleDetails["numberPlate"]; ?>" readonly>
+					<input class="form-control input-sm" value="<?php echo $vehicleDetails["numberPlate"]; ?>" readonly>
 				</div>
 			</form>
 		</div>

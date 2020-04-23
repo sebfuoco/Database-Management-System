@@ -1,3 +1,7 @@
+<?php
+// Initialize the session
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +36,11 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 
 .smallText {
-	font-size: 6vmin;
+	font-size: calc(4px + 6vmin);
 }
 </style>
 </head>
@@ -96,13 +100,9 @@ function changeButton(showLogin){
 	}
 }
 </script>
-<!-- PHP sign in code from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php -->
 <?php
-// Initialize the session
-session_start();
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    echo "you are not logged in";
     echo '<script type="text/javascript"> changeButton(0); </script>';
 }
 else {

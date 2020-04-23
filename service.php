@@ -23,7 +23,7 @@ $result = $link->query($query);
 $i = 0;
 while($row = mysqli_fetch_assoc($result)){
 	$i++;
-    $previousHistory.= $i." | Service: ".$row["service"]." on ".$row["serviceDate"]." at ".$row["serviceTime"]." in ".$row["location"].". Cost: £".$row["price"]." Summary: ".$row["summary"]."\n";
+    $previousHistory.= "\n".$i." | Service: ".$row["service"]." on ".$row["serviceDate"]." at ".$row["serviceTime"]." in ".$row["location"].", Cost: £".$row["price"].", Summary: ".$row["summary"].".\n";
 }
 if(isset($_POST['bookingBtn'])){ //check if form was submitted
 	$service = $_POST["service"];
@@ -100,7 +100,7 @@ img.header {
 }
 
 .headerText {
-	font-size: 8vmin;
+	font-size: calc(12px + 6vmin);
 }
 </style>
 </head>
@@ -128,40 +128,34 @@ img.header {
 		<div class="row">
 			<form class="col-sm border bg-light" action="" method="POST">
 				<p class="headerText display-4">Book Service</p>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-				   		<span class="input-group-text">Service</span>
-				   	</div>
-					<select class="form-control form-control-lg" name="service">
+				<div class="form-group">
+					<label>Service</label>
+					<select class="form-control" name="service">
 						<option>MOT Test</option>
 						<option>Repair</option>
 					</select>
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text">Day</span>
+				<div class="row justify-content-center">
+					<div class="form-group col-sm">
+						<label>Date</label>
+						<select class="form-control" name="serviceDate">
+							<option name="day"></option>
+							<option name="day"></option>
+							<option name="day"></option>
+							<option name="day"></option>
+							<option name="day"></option>
+							<option name="day"></option>
+							<option name="day"></option>
+						</select>
 					</div>
-					<select class="form-control form-control-lg" name="serviceDate">
-						<option name="day"></option>
-						<option name="day"></option>
-						<option name="day"></option>
-						<option name="day"></option>
-						<option name="day"></option>
-						<option name="day"></option>
-						<option name="day"></option>
-					</select>
+					<div class="form-group col-sm">
+						<label>Time</label>
+						<select class="form-control" id="serviceTime" name="serviceTime"></select>
+					</div>
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text">Time</span>
-					</div>
-					<select class="form-control form-control-lg" id="serviceTime" name="serviceTime"></select>
-				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text">Location</span>
-					</div>
-					<select class="form-control form-control-lg" name="location">
+				<div class="form-group">
+					<label>Location</label>
+					<select class="form-control" name="location">
 						<option>Woking</option>
 						<option>Farnborough</option>
 						<option>Guildford</option>
@@ -180,27 +174,27 @@ img.header {
 				<div class="row justify-content-center">
 					<div class="form-group col-sm">
 						<label for="progress">Current Service</label>
-						<input class="form-control form-control-lg" value="<?php echo $serviceDetails["service"]; ?>" readonly>
+						<input class="form-control" value="<?php echo $serviceDetails["service"]; ?>" readonly>
 					</div>
 					<div class="form-group col-sm">
 						<label for="progress">Service Progress</label>
-						<input class="form-control form-control-lg" value="<?php echo $serviceDetails["serviceProgress"]; ?>" readonly>
+						<input class="form-control" value="<?php echo $serviceDetails["serviceProgress"]; ?>" readonly>
 					</div>
 				</div>
 				<div class="row justify-content-center">
 					<div class="form-group col-sm">
 						<label for="progress">Day</label>
-						<input class="form-control form-control-lg" value="<?php echo $serviceDetails["serviceDate"]; ?>" readonly>
+						<input class="form-control" value="<?php echo $serviceDetails["serviceDate"]; ?>" readonly>
 					</div>
 					<div class="form-group col-sm">
 						<label for="progress">Time</label>
-						<input class="form-control form-control-lg" value="<?php echo $serviceDetails["serviceTime"]; ?>" readonly>
+						<input class="form-control" value="<?php echo $serviceDetails["serviceTime"]; ?>" readonly>
 					</div>
 				</div>
 				<div class="row justify-content-center">
 					<div class="form-group col-sm">
 						<label for="progress">Location</label>
-						<input class="form-control form-control-lg" value="<?php echo $serviceDetails["location"]; ?>" readonly>
+						<input class="form-control" value="<?php echo $serviceDetails["location"]; ?>" readonly>
 					</div>
 				</div>
 				<button type="button" data-toggle="modal" data-target="#currentService" class="btn btn-primary btn-lg mb-1">Change current service</button>
@@ -210,7 +204,7 @@ img.header {
 			<form class="col-sm border bg-light">
 				<p class="headerText display-4">Previous History</p>
 				<div class="form-group">
-					<textarea id="textarea" class="form-control form-control-lg" onclick="autoSize()" readonly><?php echo $previousHistory; ?></textarea>
+					<textarea id="textarea" class="form-control" onclick="autoSize()" readonly><?php echo $previousHistory; ?></textarea>
 				</div>
 			</form>
 		</div>
@@ -226,21 +220,17 @@ img.header {
 				</div>
 				<div class="modal-body">
 					<form action="" method="POST">
-						<div class="form-group form-row align-items-center">
-							<div class="input-group mb-3">
-					        	<div class="input-group-prepend">
-					          		<div class="input-group-text">Service</div>
-					        	</div>
-						     	<select class="form-control form-control-lg" name="modalService">
+						<div class="form-group align-items-center">
+							<div class="form-group">
+								<label for="progress">Service</label>
+						     	<select class="form-control" name="modalService">
 									<option>MOT Test</option>
 									<option>Repair</option>
 								</select>
 						    </div>
-						    <div class="input-group mb-3">
-						        <div class="input-group-prepend">
-						          	<div class="input-group-text">Day</div>
-						        </div>
-					    		<select class="form-control form-control-lg" name="modalDate">
+						    <div class="form-group">
+								<label for="progress">Date</label>
+					    		<select class="form-control" name="modalDate">
 									<option name="dayModal"></option>
 									<option name="dayModal"></option>
 									<option name="dayModal"></option>
@@ -250,17 +240,13 @@ img.header {
 									<option name="dayModal"></option>
 								</select>
 					    	</div>
-					    	<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Time</span>
-								</div>
-								<select class="form-control form-control-lg" id="modalTime" name="modalTime"></select>
+					    	<div class="form-group">
+								<label for="progress">Time</label>
+								<select class="form-control" id="modalTime" name="modalTime"></select>
 							</div>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Location</span>
-								</div>
-								<select class="form-control form-control-lg" name="modalLocation">
+							<div class="form-group">
+								<label for="progress">Location</label>
+								<select class="form-control" name="modalLocation">
 									<option>Woking</option>
 									<option>Farnborough</option>
 									<option>Guildford</option>
