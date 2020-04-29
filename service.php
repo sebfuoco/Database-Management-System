@@ -12,6 +12,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "config.php";
 require_once "checkID.php";
 
+$query = "SELECT carBrand, carName, numberPlate FROM usercar WHERE carID = '$userID'";
+$query2 = "SELECT fullName, email, phoneNumber FROM userdetails WHERE userID = '$userID'";
+$vehicleDetails = $link->query($query);
+$userDetails = $link->query($query2);
+if (mysqli_num_rows($userDetails) == 0){
+	header("location: userPage.php");
+}
+else if (mysqli_num_rows($vehicleDetails) == 0){
+	header("location: userPage.php");
+}
+$userDetails = mysqli_fetch_assoc($userDetails);
+$vehicleDetails = mysqli_fetch_assoc($vehicleDetails);
+if ($userDetails["fullName"] == null || $userDetails["email"] == null || $userDetails["phoneNumber"] == null){
+	header("location: userPage.php");
+}
+else if ($vehicleDetails["carBrand"] == null || $vehicleDetails["carName"] == null || $vehicleDetails["numberPlate"] == null){
+	header("location: userPage.php");
+}
 $message = $previousHistory = "" ;
 $query = "SELECT service, serviceProgress, serviceDate, serviceTime, location FROM userservice WHERE customerID = '$userID'";
 $serviceDetails = $link->query($query);
@@ -77,36 +95,11 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<style>
-img.header {
-	object-fit: cover;
-	width: 100%;
-	max-height: 50vh;
-	overflow: hidden;
-}
-
-.imageContainer {
-	position: relative;
-	text-align: center;
-}
-
-.centered {
-	position: absolute;
-	background-color: rgba(13, 13, 13, 0.5);
-	color: white;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.headerText {
-	font-size: calc(12px + 6vmin);
-}
-</style>
+<link rel="stylesheet" type="text/css" href="format.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand">WeFix</a>
+	  <a class="navbar-brand" href="index.php">WeFix</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	  	<span class="navbar-toggler-icon"></span>
 	  </button>

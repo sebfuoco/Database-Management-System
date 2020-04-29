@@ -1,0 +1,30 @@
+img.header {
+	object-fit: cover;
+	width: 100%;
+	max-height: 50vh;
+	overflow: hidden;
+}
+
+.imageContainer {
+	position: relative;
+	text-align: center;
+}
+
+.centered {
+	position: absolute;
+	background-color: rgba(13, 13, 13, 0.5);
+	color: white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.headerText {
+	font-size: calc(12px + 6vmin);
+}
+.warning {
+	font-size: calc(10px + 1vmin);
+}
+.smallText {
+	font-size: calc(4px + 6vmin);
+}

@@ -18,7 +18,7 @@ if(isset($_POST['submitBtn'])){
 	$result = $link->query($query);
 	$result = mysqli_fetch_assoc($result);
 	$part = $result["part"];
-	$query2 = "SELECT serviceDate FROM userprevioushistory WHERE userID = '$userID'";
+	$query2 = "SELECT serviceDate, part FROM userprevioushistory WHERE userID = '$userID'";
 	$query3 = "SELECT serviceDate FROM userservice WHERE customerID = '$userID'";
 	$previousDate = $link->query($query2);
 	$previousDateResult = mysqli_fetch_assoc($previousDate);
@@ -26,14 +26,16 @@ if(isset($_POST['submitBtn'])){
 	$dateResult = mysqli_fetch_assoc($date);
 	$partPrice = 1;	
 	$dateResultText = $dateResult["serviceDate"];
-	$d = date_parse_from_format("d-m-y", $previousDateResult["serviceDate"]);
-	$d2 = date_parse_from_format("d-m-y", $dateResult["serviceDate"]);
-	$d = date_create($d["year"].'-'.$d["month"].'-'.$d["day"]);
-	$d2 = date_create($d2["year"].'-'.$d2["month"].'-'.$d2["day"]);
-	$interval = date_diff($d, $d2);
-	if (($interval->m + 12*$interval->y) < 6){
-		$partPrice = 0;
-		$summary.= "Part Price covered by 6 month guarantee! ";
+	if ($part == $previousDateResult["part"]){
+		$d = date_parse_from_format("d-m-y", $previousDateResult["serviceDate"]);
+		$d2 = date_parse_from_format("d-m-y", $dateResult["serviceDate"]);
+		$d = date_create($d["year"].'-'.$d["month"].'-'.$d["day"]);
+		$d2 = date_create($d2["year"].'-'.$d2["month"].'-'.$d2["day"]);
+		$interval = date_diff($d, $d2);
+		if (($interval->m + 12*$interval->y) < 6){
+			$partPrice = 0;
+			$summary.= "Part Price covered by 6 month guarantee! ";
+		}
 	}
 	$query2 = "SELECT enginePrice, batteryPrice, brakesPrice, wiperbladesPrice, bulbsPrice FROM vehiclepartprice WHERE company = '$company'";
 	$result2 = $link->query($query2);
@@ -69,7 +71,8 @@ if(isset($_POST['updateBtn'])){
 	$serviceDate = $result["serviceDate"];
 	$serviceTime = $result["serviceTime"];
 	$location = $result["location"];
-	$sql = "INSERT INTO userprevioushistory (userID, service, serviceDate, serviceTime, location, price, summary) VALUES ('$userID', '$service', '$serviceDate', '$serviceTime', '$location', '$price', '$summary')";
+	$part = $_POST["part"];
+	$sql = "INSERT INTO userprevioushistory (userID, service, serviceDate, serviceTime, location, price, summary, part) VALUES ('$userID', '$service', '$serviceDate', '$serviceTime', '$location', '$price', '$summary','$part')";
 	if (mysqli_query($link, $sql)) {
 		echo "Invoice successfully created.";
 		$sql = "DELETE FROM userservice WHERE customerID = '$userID'";
@@ -97,35 +100,11 @@ if(isset($_POST['updateBtn'])){
 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<style>
-img.header {
-	object-fit: cover;
-	width: 100%;
-	max-height: 50vh;
-	overflow: hidden;
-}
-
-.imageContainer {
-	position: relative;
-	text-align: center;
-}
-
-.centered {
-	position: absolute;
-	background-color: rgba(13, 13, 13, 0.5);
-	color: white;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.headerText {
-	font-size: calc(12px + 6vmin);
-}
-</style>
+<link rel="stylesheet" type="text/css" href="format.css">
+</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand">WeFix</a>
+	  <a class="navbar-brand" href="index.php">WeFix</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	  	<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -156,7 +135,7 @@ img.header {
 			<div class="row justify-content-center">
 				<div class="form-group col-sm">
 					<label>Part fitted</label>
-					<input class="form-control" value="<?php echo $part ?>" readonly>
+					<input class="form-control" name="part" value="<?php echo $part ?>" readonly>
 				</div>
 				<div class="form-group col-sm">
 					<label>Quantity</label>

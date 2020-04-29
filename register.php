@@ -80,36 +80,7 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<style>
-img.header {
-object-fit: cover;
-width: 100%;
-max-height: 50vh;
-overflow: hidden;
-}
-
-.imageContainer {
-	position: relative;
-	text-align: center;
-}
-
-.centered {
-	position: absolute;
-	background-color: rgba(13, 13, 13, 0.5);
-	color: white;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.headerText {
-    font-size: calc(12px + 6vmin);
-}
-
-.smallText {
-	font-size: calc(12px + 4vmin);
-}
-</style>
+<link rel="stylesheet" type="text/css" href="format.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -135,23 +106,23 @@ overflow: hidden;
     	<div class="row">
 	        <form class="col-sm border bg-light" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 	            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-	                <label class="smallText">Username</label>
+	                <label>Username</label>
 	                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
 	                <span class="help-block"><?php echo $username_err; ?></span>
 	            </div>    
 	            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-	                <label class="smallText">Password</label>
+	                <label>Password</label>
 	                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
 	                <span class="help-block"><?php echo $password_err; ?></span>
 	            </div>
 	            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-	                <label class="smallText">Confirm Password</label>
+	                <label>Confirm Password</label>
 	                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
 	                <span class="help-block"><?php echo $confirm_password_err; ?></span>
             	</div>
 	            <div class="form-group">
 	                <input type="submit" class="btn btn-primary" value="Submit">
-	                <input type="reset" class="btn btn-default" value="Reset">
+	                <input type="reset" class="btn btn-default border bg-light" value="Reset">
 	            </div>
 	            <p>Already have an account? <a href="login.php">Login here</a>.</p>
 	        </form>

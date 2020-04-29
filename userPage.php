@@ -20,11 +20,11 @@ $vehicleDetails = $link->query($query);
 $userDetails = $link->query($query2);
 if ($userDetails != null){
 	$userDetails = mysqli_fetch_assoc($userDetails);
+
 }
 if ($vehicleDetails != null){
 	$vehicleDetails = mysqli_fetch_assoc($vehicleDetails);
 }
-
 if(isset($_POST['contactBtn'])){ //check if form was submitted
 	$fullName = $_POST["fullName"];
 	$email = $_POST["email"];
@@ -52,9 +52,10 @@ if(isset($_POST['vehicleBtn'])){
 	$carBrand = $_POST["carBrand"];
 	$carName = $_POST["carName"];
 	$numberPlate = strtoupper($_POST["numPlate"]);
+	$carBrand = ($carBrand ?: $vehicleDetails["carBrand"]);
 	$carName = ($carName ?: $vehicleDetails["carName"]);
 	$numberPlate = ($numberPlate ?: $vehicleDetails["numberPlate"]);
-	if ($vehicleDetails["carName"] == null && $vehicleDetails["numberPlate"] == null){
+	if ($vehicleDetails["carBrand"] == null && $vehicleDetails["carName"] == null && $vehicleDetails["numberPlate"] == null){
 		$sql = "INSERT INTO usercar (carID, carBrand, carName, numberPlate) VALUES ('$userID', '$carBrand', '$carName', '$numberPlate')";
 	} else {
 		$sql = "UPDATE usercar SET carBrand = '$carBrand', carName = '$carName', numberPlate = '$numberPlate' WHERE carID = '$userID'";
@@ -78,36 +79,11 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<style>
-img.header {
-	object-fit: cover;
-	width: 100%;
-	max-height: 50vh;
-	overflow: hidden;
-}
-
-.imageContainer {
-	position: relative;
-	text-align: center;
-}
-
-.centered {
-	position: absolute;
-	background-color: rgba(13, 13, 13, 0.5);
-	color: white;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.headerText {
-	font-size: calc(12px + 6vmin);
-}
-</style>
+<link rel="stylesheet" type="text/css" href="format.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand">WeFix</a>
+	  <a class="navbar-brand" href="index.php">WeFix</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	  	<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -126,6 +102,7 @@ img.header {
 			<img class="header" src="Images/mechanic.jfif">
 			<div class="centered headerText display-2">Details</div>
 		</div>
+		<div class="alert-info row mb-0 warning text-center" role="alert">All details must be filled to book a service.</div>
 		<div class="row">
 			<!-- Input -->
 			<form class="col-sm border bg-light" action="" method="POST">
